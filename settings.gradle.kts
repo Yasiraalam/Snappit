@@ -13,6 +13,6 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "iust Thread"
+rootProject.name = "Snappit"
 include(":app")
  
