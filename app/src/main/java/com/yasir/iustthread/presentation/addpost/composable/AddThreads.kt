@@ -350,7 +350,7 @@ fun AddThreads(navHostController: NavHostController) {
                             painter = rememberAsyncImagePainter(model = imageUri),
                             contentDescription = "Selected Image",
                             modifier = Modifier.fillMaxSize(),
-                            contentScale = ContentScale.Crop
+                            contentScale = ContentScale.Fit
                         )
                         IconButton(
                             onClick = { imageUri = null },

@@ -33,6 +33,7 @@ import androidx.compose.material.icons.filled.MoreVert
 import androidx.compose.material.icons.filled.Share
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -78,6 +79,8 @@ import kotlinx.coroutines.delay
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
+import coil.compose.SubcomposeAsyncImage
+import coil.compose.AsyncImagePainter
 
 @Composable
 fun HomeScreen(
@@ -306,9 +309,9 @@ fun PostCard(
     Card(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(horizontal = 16.dp, vertical = 12.dp),
+            .padding(horizontal = 8.dp, vertical = 12.dp),
         colors = CardDefaults.cardColors(containerColor = Color.White),
-        shape = RoundedCornerShape(20.dp),
+        shape = RoundedCornerShape(8.dp),
         elevation = CardDefaults.cardElevation(defaultElevation = 2.dp)
     ) {
         Column(
@@ -479,6 +482,8 @@ fun PostCard(
     }
 }
 
+
+
 @Composable
 fun DoubleTapLikeImage(
     imageUrl: String,
@@ -517,24 +522,24 @@ fun DoubleTapLikeImage(
     Card(
         modifier = Modifier
             .fillMaxWidth()
-            .height(300.dp)
+            .height(400.dp)
             .pointerInput(Unit) {
                 detectTapGestures(
                     onTap = { offset ->
                         val currentTime = System.currentTimeMillis()
                         val timeDiff = currentTime - lastTapTime
-                        
+
                         if (timeDiff < 300) { // Double tap detected (within 300ms)
                             // Only trigger like if not already liked and haven't double-tapped yet
                             if (!isLiked && !hasDoubleTapped) {
                                 onLikeClick(false) // false means we want to like it
                                 hasDoubleTapped = true
-                                
+
                                 // Show heart animation
                                 showHeartAnimation = true
                             }
                         }
-                        
+
                         lastTapTime = currentTime
                     }
                 )
@@ -551,8 +556,8 @@ fun DoubleTapLikeImage(
                 contentDescription = "Post Image",
                 modifier = Modifier
                     .fillMaxSize()
-                    .clip(RoundedCornerShape(12.dp)),
-                contentScale = ContentScale.Crop,
+                    .clip(RoundedCornerShape(8.dp)),
+                contentScale = ContentScale.Fit,
                 error = painterResource(id = R.drawable.image)
             )
             
@@ -588,10 +593,10 @@ fun SkeletonPostCard() {
     Card(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(horizontal = 16.dp, vertical = 12.dp)
+            .padding(horizontal = 12.dp, vertical = 12.dp)
             .spotlightShimmerEffect(),
         colors = CardDefaults.cardColors(containerColor = Color.White),
-        shape = RoundedCornerShape(20.dp),
+        shape = RoundedCornerShape(12.dp),
         elevation = CardDefaults.cardElevation(defaultElevation = 2.dp)
     ) {
         Column(
@@ -636,14 +641,6 @@ fun SkeletonPostCard() {
                         )
                     }
                 }
-
-                // Menu button skeleton - exact size
-                Box(
-                    modifier = Modifier
-                        .size(40.dp)
-                        .clip(CircleShape)
-                        .background(Color(0xFFE5E7EB))
-                )
             }
 
             Spacer(modifier = Modifier.height(16.dp))
