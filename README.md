@@ -66,6 +66,7 @@ Download JDK 17 from [Adoptium](https://adoptium.net/temurin/releases/?version=1
 
 ## Demo Pics
 
+<img src="https://github.com/user-attachments/assets/6993b067-857a-4b0a-a943-f8d51be598bc" width="220" height="450"/>
 <img src="https://github.com/user-attachments/assets/3993ce40-8a48-48f2-aae6-ab7746abe31b" width="220" height="450"/>
 <img src="https://github.com/user-attachments/assets/0c21e40b-9cab-4295-9a8d-5cff599a75a2" width="220" height="450"/>
 <img src="https://github.com/user-attachments/assets/29ae1398-8e05-4a95-b211-d69b0e468219" width="220" height="450"/>
